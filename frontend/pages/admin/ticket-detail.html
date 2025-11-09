@@ -81,7 +81,7 @@
               </div>
               <div class="flex items-center gap-3">
                 <div class="text-right">
-                  <p class="font-semibold text-gray-800" id="userName"></p>
+                  <p class="font-semibold text-gray-800" id="userName">Admin</p>
                   <p class="text-xs text-gray-500">Administrator</p>
                 </div>
                 <div
@@ -95,115 +95,156 @@
         </header>
 
         <!-- Ticket Content -->
-        <div class="max-w-7xl mx-auto px-6 py-6">
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <!-- Left Section - Ticket Details -->
-            <div class="lg:col-span-2 space-y-6">
-              <!-- Ticket Header -->
-              <div class="bg-white rounded-lg shadow-sm p-6">
-                <div class="flex items-start justify-between mb-6">
-                  <h1 class="text-2xl font-bold text-gray-900">
-                    #<span id="ticketId">0010</span> <span id="ticketTitle">คอมพิวเตอร์เปิดไม่ติด</span>
-                  </h1>
-                  <span id="ticketStatus"
-                    class="px-4 py-1.5 bg-green-500 text-white rounded-md font-medium text-sm"
-                  >
-                    Open
-                  </span>
-                </div>
-
-                <!-- Ticket Info Grid -->
-                <div class="space-y-3 text-sm">
-                  <div class="flex">
-                    <span class="font-medium text-gray-700 w-40">Ticket ID:</span>
-                    <span class="text-gray-900" id="displayTicketId">0010</span>
-                  </div>
-                  <div class="flex">
-                    <span class="font-medium text-gray-700 w-40">Created by:</span>
-                    <span class="text-gray-900" id="createdBy">Christina Juyu</span>
-                  </div>
-                  <div class="flex">
-                    <span class="font-medium text-gray-700 w-40">Email:</span>
-                    <span class="text-gray-900" id="userEmail">66160000@go.buu.ac.th</span>
-                  </div>
-                  <div class="flex">
-                    <span class="font-medium text-gray-700 w-40">Department:</span>
-                    <span class="text-gray-900" id="department">Accounting</span>
-                  </div>
-                  <div class="flex">
-                    <span class="font-medium text-gray-700 w-40">Priority:</span>
-                    <span class="text-gray-900" id="priority">High</span>
-                  </div>
-                  <div class="flex">
-                    <span class="font-medium text-gray-700 w-40">Assigned to:</span>
-                    <span class="text-gray-900" id="assignedTo"></span>
-                  </div>
-                </div>
+      <div class="max-w-7xl mx-auto px-6 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Left Section - Ticket Details -->
+          <div class="lg:col-span-2 space-y-6">
+            <!-- Ticket Header -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <div class="flex items-start justify-between mb-6">
+                <h1 class="text-2xl font-bold text-gray-900">
+                  #<span id="ticketId">0010</span> <span id="ticketTitle">คอมพิวเตอร์เปิดไม่ติด</span>
+                </h1>
+                <button id="deleteButton" type="button"
+                  class="px-4 py-1.5 bg-red-500 text-white rounded-md font-medium text-sm hover:bg-red-600"
+                > ลบ </button>
               </div>
+              <script>
+                // 1. ค้นหาปุ่มด้วย ID ที่เราตั้งไว้
+                const button = document.getElementById('deleteButton');
 
-              <!-- Description Section -->
-              <div class="bg-white rounded-lg shadow-sm p-6">
-                <div class="flex items-center justify-between mb-4">
-                  <h2 class="text-lg font-semibold text-gray-900">
-                    Description
-                  </h2>
-                  <span id="ticketSubStatus"
-                    class="px-3 py-1 bg-green-500 text-white rounded-md text-xs font-medium"
-                  >
-                    Waiting for assignment
-                  </span>
+                // 2. เพิ่มตัวดักฟังเหตุการณ์ (Event Listener) เมื่อปุ่มถูกคลิก
+                button.addEventListener('click', function() {
+                  
+                  // 3. แสดงกล่องข้อความยืนยัน (confirm)
+                  // ฟังก์ชัน confirm() จะแสดงข้อความตามที่เราใส่
+                  // พร้อมปุ่ม "OK" (ทำหน้าที่เป็น "ยืนยัน") และ "Cancel" (ยกเลิก)
+                  const isConfirmed = window.confirm('ยืนยันการลบ');
+
+                  // 4. (ขั้นสูง) ตรวจสอบว่าผู้ใช้กดยืนยันหรือไม่
+                  if (isConfirmed) {
+                    // ถ้าผู้ใช้กด "OK" (ยืนยัน)
+                    console.log('ผู้ใช้กดยืนยัน');
+                    // คุณสามารถใส่โค้ดที่ต้องการให้ทำงานหลังกดยืนยันที่นี่
+                    // เช่น ส่งคำสั่งลบไปที่ Server หรือลบรายการนี้ออกจากหน้าเว็บ
+                  } else {
+                    // ถ้าผู้ใช้กด "Cancel" (ยกเลิก)
+                    console.log('ผู้ใช้ยกเลิก');
+                  }
+                });
+              </script>
+
+              <!-- Ticket Info Grid -->
+              <div class="space-y-3 text-sm">
+                <div class="flex">
+                  <span class="font-medium text-gray-700 w-40">Ticket ID :</span>
+                  <span class="text-gray-900" id="displayTicketId">0010</span>
                 </div>
-                <p id="description" class="text-gray-700 leading-relaxed">
-                  เปิดเครื่องแล้วไม่ไฟขึ้น หน่วงไม่กำลาน
-                </p>
-
-                <!-- Attachments -->
-                <div class="mt-6" id="attachments-section">
-                  <h3 class="text-sm font-medium text-gray-700 mb-2">
-                    Attachments:
-                  </h3>
-                  <div id="attachments-list">
-                    <div class="flex items-center gap-2 text-blue-600 hover:text-blue-700 cursor-pointer">
-                      <i class="fas fa-paperclip"></i>
-                      <span class="text-sm">screenshot.png</span>
-                    </div>
-                  </div>
+                <div class="flex">
+                  <span class="font-medium text-gray-700 w-40">Created by :</span>
+                  <span class="text-gray-900" id="createdBy">Chistina Juyu</span>
+                </div>
+                <div class="flex">
+                  <span class="font-medium text-gray-700 w-40">Email :</span>
+                  <span class="text-gray-900" id="userEmail">Chistina@gmail.com</span>
+                </div>
+                <div class="flex">
+                  <span class="font-medium text-gray-700 w-40">Department :</span>
+                  <span class="text-gray-900" id="department">Accounting</span>
+                </div>
+                <div class="flex">
+                  <span class="font-medium text-gray-700 w-40">Priority :</span>
+                  <span class="text-gray-900" id="priority">High</span>
+                </div>
+                <div class="flex">
+                  <span class="font-medium text-gray-700 w-40">Assigned to :</span>
+                  <span class="text-gray-900" id="assignedTo"></span>
                 </div>
               </div>
             </div>
 
-            <!-- Right Section - Comments -->
-            <div class="lg:col-span-1">
-              <div class="bg-white rounded-lg shadow-sm p-6 h-full flex flex-col">
-                <h2 class="text-lg font-semibold text-gray-900 mb-4">
-                  Comments
+            <!-- Description Section -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-900">
+                  Description
                 </h2>
+                <span id="ticketSubStatus"
+                  class="px-3 py-1 bg-green-500 text-white rounded-md text-xs font-medium"
+                >
+                  Waiting for assignment
+                </span>
+              </div>
+              <p id="description" class="text-gray-700 leading-relaxed">
+                เปิดเครื่องแล้วไม่ไฟขึ้น หน่วงไม่กำลาน
+              </p>
 
-                <!-- Comments List -->
-                <div id="comments-list" class="flex-1 space-y-3 mb-4">
-                  <!-- Comments will be dynamically added here -->
-                </div>
-
-                <!-- Comment Input -->
-                <div class="border-t pt-4 mt-auto">
-                  <div class="flex items-center gap-2">
-                    <button id="attach-file" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
-                      <i class="fas fa-paperclip text-gray-500"></i>
-                    </button>
-                    <input
-                      type="text"
-                      id="comment-input"
-                      placeholder="Add a comment"
-                      class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                    />
-                    <button
-                      id="send-comment"
-                      class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium text-sm flex items-center gap-2"
-                    >
-                      <i class="fas fa-paper-plane"></i>
-                      Send
-                    </button>
+              <!-- Attachments -->
+              <div class="mt-6" id="attachments-section">
+                <h3 class="text-sm font-medium text-gray-700 mb-2">
+                  Attachments :
+                </h3>
+                <div id="attachments-list">
+                  <div class="flex items-center gap-2 text-blue-600 hover:text-blue-700 cursor-pointer">
+                    <i class="fas fa-paperclip"></i>
+                    <span class="text-sm">screenshot.png</span>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Section - Comments -->
+          <div class="lg:col-span-1">
+            <div class="bg-white rounded-lg shadow-sm p-6 h-full flex flex-col">
+              <h2 class="text-lg font-semibold text-gray-900 mb-4">
+                Comments
+              </h2>
+
+              <!-- Comments List -->
+              <div id="comments-list" class="flex-1 space-y-3 mb-4">
+                <!-- Initial comments -->
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-gray-300 flex-shrink-0"></div>
+                  <div class="flex-1">
+                    <div class="text-xs text-gray-500 mb-1">09:24 AM</div>
+                    <div class="bg-gray-100 rounded-lg px-4 py-2 min-h-[40px]"></div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-gray-300 flex-shrink-0"></div>
+                  <div class="flex-1">
+                    <div class="text-xs text-gray-500 mb-1">09:35 AM</div>
+                    <div class="bg-gray-100 rounded-lg px-4 py-2 min-h-[40px]"></div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-gray-300 flex-shrink-0"></div>
+                  <div class="flex-1">
+                    <div class="text-xs text-gray-500 mb-1">09:53 AM</div>
+                    <div class="bg-gray-100 rounded-lg px-4 py-2 min-h-[40px]"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Comment Input -->
+              <div class="border-t pt-4 mt-auto">
+                <div class="flex items-center gap-2">
+                  <button id="attach-file" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                    <i class="fas fa-paperclip text-gray-500"></i>
+                  </button>
+                  <input
+                    type="text"
+                    id="comment-input"
+                    placeholder="Add a comment"
+                    class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
+                  />
+                  <button
+                    id="send-comment"
+                    class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors font-medium text-sm flex items-center gap-2"
+                  >
+                    Send
+                  </button>
                 </div>
               </div>
             </div>
